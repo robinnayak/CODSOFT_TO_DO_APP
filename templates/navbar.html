@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    <style>
+      /* Navbar container */
+      nav {
+        display: flex;
+        height: 40px;
+        margin-bottom: 100px;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background: linear-gradient(
+          90deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(14, 230, 54, 1) 0%,
+          rgba(25, 30, 31, 1) 100%
+        );
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        color: white;
+        position: sticky; /* Sticks navbar to the top on scroll */
+        top: 0;
+        z-index: 1000; /* Ensures it stays above other elements */
+      }
+
+      /* Logo styles */
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        padding: 10px;
+        cursor: pointer;
+        color: white;
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.1);
+      }
+
+      /* Links container */
+      .links {
+        display: flex;
+        align-items: center;
+      }
+
+      /* List styles */
+      .links ul {
+        display: flex;
+        gap: 20px; /* Adds spacing between links */
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Link styles */
+      .links a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .links a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 10px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 20px;
+        }
+
+        .links ul {
+          flex-direction: column;
+          gap: 10px; /* Adjust spacing for smaller screens */
+          width: 100%;
+        }
+
+        .links a {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <h1>To-Do App</h1>
+      </div>
+      <div class="links">
+        <ul>
+          <li><a href="{{ url_for('home_page') }}">Home</a></li>
+          <li><a href="{{ url_for('add_task') }}">Add Task</a></li>
+        </ul>
+      </div>
+    </nav>
+  </body>
+</html>

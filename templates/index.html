@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .custom_class {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        background: linear-gradient(
+          90deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(14, 230, 54, 1) 0%,
+          rgba(25, 30, 31, 1) 100%
+        );
+      }
+      .container {
+        margin-top: 80px; /* Adjusted margin to account for the navbar height */
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <!-- Include the Navbar -->
+    {% include 'navbar.html' %}
+
+    <div
+      class="container mx-auto w-full max-w-3xl p-6 shadow-md rounded-md custom_class"
+    >
+      <h1 class="text-3xl font-bold text-center mb-6 text-white">To-Do List</h1>
+      <ul class="mb-6">
+        {% for task in tasks %}
+        <li
+          class="flex justify-between items-center bg-gray-50 p-4 mb-3 rounded-md"
+        >
+          <span>{{ task }}</span>
+          <a
+            href="{{ url_for('delete_task', task_id=loop.index0) }}"
+            class="text-red-600 hover:text-red-800"
+            >Delete</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+      <a
+        href="{{ url_for('add_task') }}"
+        class="block text-center bg-blue-500 text-white py-3 px-5 rounded-md hover:bg-blue-700"
+      >
+        Add a New Task
+      </a>
+    </div>
+  </body>
+</html>
